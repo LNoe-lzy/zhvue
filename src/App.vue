@@ -1,23 +1,22 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <router-view></router-view>
+    <v-footer></v-footer>
   </div>
 </template>
 
 <script>
+// 倒入基本组件
+import Footer from './components/Footer/Footer'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    'v-footer': Footer
+  }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

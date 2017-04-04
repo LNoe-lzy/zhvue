@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+// 引入字体文件
+import './common/stylus/icon.styl'
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
