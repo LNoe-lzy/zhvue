@@ -34,7 +34,7 @@ export default {
   bottom: 0
   left: 0
   background: #fff
-  z-index: 1000
+  z-index: 30
   .item
     height: 50px;
     width: 50px;

@@ -1,8 +1,10 @@
 <template>
     <transition name="info">
-        <div v-if="showFlag" class="info">
+        <div v-if="showFlag"
+             class="info">
             <div class="infoHeader">
-                <div  @click="hide" class="back"><span class="icon-times-outline"></span></div>
+                <div @click="hide"
+                     class="back"><span class="icon-times-outline"></span></div>
                 <div class="infoInfo">回答</div>
                 <div class="share"><span class="icon-flow-merge"></span></div>
                 <div class="set"><span class="icon-th-list"></span></div>
@@ -13,8 +15,32 @@
                 <div class="userName">{{info.user.name}}</div>
                 <span class="userFollow">关注</span>
             </div>
-            <div class="infoMain"></div>
-            <div class="infoFooter"></div>
+            <div class="infoMain">
+                {{info.user.info}}
+                <div class="mainFooter">
+                    <span class="time">发布于 {{info.user.time}}</span>
+                    <span>著作权归作者所有</span>
+                </div>
+            </div>
+            <div class="infoFooter">
+                <div class="infoNum">{{info.love}}</div>
+                <div class="infoIcon">
+                    <span class="icon-flag icon"></span>
+                    <span class="i">没有帮助</span>
+                </div>
+                <div class="infoIcon">
+                    <span class="icon-heart-outline icon"></span>
+                    <span class="i">感谢</span>
+                </div>
+                <div class="infoIcon">
+                    <span class="icon-star-outline icon"></span>
+                    <span class="i">收藏</span>
+                </div>
+                <div class="infoIcon">
+                    <span class="icon-message-typing icon"></span>
+                    <span class="i">{{info.commit}}</span>
+                </div>
+            </div>
         </div>
     </transition>
 </template>
@@ -57,6 +83,9 @@ export default {
   top: 0
   background: #fff
   width: 100%
+  height: 100vh
+  z-index: 31
+  overflow: scroll
   .infoHeader
     height: 60px
     width: 100%
@@ -113,5 +142,47 @@ export default {
       box-sizing: border-box
       padding: 10px 15px
       border-radius: 5px
-      border: solid 1px #0f88eb      
+      border: solid 1px #0f88eb
+   .infoMain
+     box-sizing: border-box
+     width: 100%
+     padding: 35px 20px 0 20px
+     margin-bottom: 70px    
+     line-height: 2
+     .mainFooter
+       display: flex
+       flex-direction: column
+       text-align: right
+       margin-top: 20px
+       font-size: 12px
+       color: #999    
+   .infoFooter
+     z-index: 32
+     position: fixed
+     bottom: 0
+     left: 0
+     width: 100%
+     height: 60px
+     background: #fff
+     display: flex
+     padding: 5px
+     box-sizing: border-box
+     justify-content: space-around  
+     align-items: center
+     border-top: 1px solid #d3d3d3
+     .infoNum
+       padding: 5px 10px
+       border: 1px solid #999
+       border-radius: 3px
+       color: #999
+     .infoIcon
+       display: flex
+       flex-direction: column
+       align-items: center
+       color: #999
+       .i
+         font-size: 12px
+         margin-top: 5px
+       .icon
+         font-size: 20px  
 </style>
