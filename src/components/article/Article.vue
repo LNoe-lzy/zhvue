@@ -9,15 +9,15 @@
       </div>
     </div>
     <div class="wrapper">
-      <div class="item">
+      <div class="item" v-for="arc in article">
         <div class="top">
-          <div class="avatar"><img src="../../common/images/avatar1.jpg" ></div>
-          <div class="topic">来自话题：商业</div>
+          <div class="avatar"><img :src="arc.avatar"></div>
+          <div class="topic">{{arc.topic}}</div>
         </div>
-        <h1 class="title">你在哪一刻体验到了真正的贫富差距？</h1>
-        <p class="info">大学暑假在工厂里打假期工。每天就是把铜线缆装上小车，推到仓库去，码好。一捆大约100斤，每天大概要搬运400捆。 车间里...</p>
+        <h1 class="title">{{arc.title}}</h1>
+        <p class="info">{{arc.summary}}</p>
         <div class="bottom">
-          <span>2.6k 赞同</span> • <span>386 评论</span> • <span>关注问题</span>
+          <span>{{arc.love}} 赞同</span> • <span>{{arc.commit}} 评论</span> • <span>关注问题</span>
         </div>
       </div>
     </div>
@@ -27,6 +27,19 @@
 
 export default {
   name: 'article',
+  data() {
+    return {
+      article: []
+    }
+  },
+  created() {
+    this.$http.get('/api/article').then((response) => {
+      response = response.body;
+      if (response.errno === 0) {
+        this.article = response.article;
+      }
+    })
+  }
 }
 </script>
 
@@ -82,7 +95,7 @@ export default {
        margin-left: 10px  
    .wrapper
      box-sizing: border-box
-     padding-top: 70px
+     padding: 70px 0 50px 0
      min-height: 100vh
      background: rgb(245, 245, 245)
      .item
@@ -90,6 +103,7 @@ export default {
        width: 100%
        height: 200px
        padding: 15px
+       margin-bottom: 10px
        background: #fff
        box-shadow: 0px 0px 3px #aaaaaa
        display: flex
