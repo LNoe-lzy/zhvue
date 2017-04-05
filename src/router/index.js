@@ -5,12 +5,12 @@ import Find from '../components/Find/Find'
 import Remind from '../components/Remind/Remind'
 import Message from '../components/Message/Message'
 import Setting from '../components/Setting/Setting'
+import Info from '../components/Info/Info'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       component: Article
     },
@@ -33,6 +33,5 @@ export default new Router({
     {
       path: '/setting',
       component: Setting
-    },
-  ]
+    }]
 })

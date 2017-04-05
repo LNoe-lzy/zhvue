@@ -1,35 +1,40 @@
 <template>
-  <div class="article">
-    <div class="header">
-      <input type="text"
-             placeholder="搜索" />
-      <label><span class="icon-search"></span></label>
-      <div class="live">
-        <span class="icon-power"></span>
-      </div>
-    </div>
-    <div class="wrapper">
-      <div class="item" v-for="arc in article">
-        <div class="top">
-          <div class="avatar"><img :src="arc.avatar"></div>
-          <div class="topic">{{arc.topic}}</div>
-        </div>
-        <h1 class="title">{{arc.title}}</h1>
-        <p class="info">{{arc.summary}}</p>
-        <div class="bottom">
-          <span>{{arc.love}} 赞同</span> • <span>{{arc.commit}} 评论</span> • <span>关注问题</span>
+  <div>
+    <div class="article">
+      <div class="header">
+        <input type="text"
+               placeholder="搜索" />
+        <label><span class="icon-search"></span></label>
+        <div class="live">
+          <span class="icon-power"></span>
         </div>
       </div>
+      <div class="wrapper">
+        <div class="item"
+             v-for="(arc, index) in article">
+          <div class="top">
+            <div class="avatar"><img :src="arc.avatar"></div>
+            <div class="topic">{{arc.topic}}</div>
+          </div>
+          <h1 class="title">{{arc.title}}</h1>
+          <p @click="selectArticle(arc)" class="summary">{{arc.summary}}</p>
+          <div class="bottom">
+            <span>{{arc.love}} 赞同</span> • <span>{{arc.commit}} 评论</span> • <span>关注问题</span>
+          </div>
+        </div>
+      </div>
     </div>
+    <Info :info="selectedArticle" ref="info"></Info>
   </div>
 </template>
 <script>
-
+import Info from '../Info/Info'
 export default {
   name: 'article',
   data() {
     return {
-      article: []
+      article: [],
+      selectedArticle: {}
     }
   },
   created() {
@@ -39,6 +44,16 @@ export default {
         this.article = response.article;
       }
     })
+  },
+  methods: {
+    selectArticle(article) {
+      this.selectedArticle = article;
+      // 显示info组件
+      this.$refs.info.show();
+    }
+  },
+  components: {
+    Info
   }
 }
 </script>
@@ -126,8 +141,9 @@ export default {
          font-size: 18px
          font-weight: 700
          margin: 10px 0
-       .info
+       .summary
          line-height: 24px
+         color: #000
        .bottom
          color: #999
          font-weight: 100
