@@ -33,6 +33,8 @@ export default {
   position: fixed
   bottom: 0
   left: 0
+  background: #fff
+  z-index: 1000
   .item
     height: 50px;
     width: 50px;
