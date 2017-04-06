@@ -1,104 +1,109 @@
 <template>
-  <div class="find">
-    <div class="findHeader">
-      <div class="headInfo">发现</div>
-    </div>
-    <div class="findNav">
-      <div class="navItem">
-        <div class="icon blue">
-          <span class="icon-poll"></span>
-        </div>
-        <span class="iconText">专栏</span>
+  <div>
+    <div class="find">
+      <div class="findHeader">
+        <div class="headInfo">发现</div>
       </div>
-      <div class="navItem">
-        <div class="icon yellow">
-          <span class="icon-audiotrack"></span>
+      <div class="findNav">
+        <div class="navItem">
+          <div class="icon blue">
+            <span class="icon-poll"></span>
+          </div>
+          <span class="iconText">专栏</span>
         </div>
-        <span class="iconText">Live</span>
-      </div>
-      <div class="navItem">
-        <div class="icon green">
-          <span class="icon-developer_board"></span>
+        <div class="navItem">
+          <div class="icon yellow">
+            <span class="icon-audiotrack"></span>
+          </div>
+          <span class="iconText">Live</span>
         </div>
-        <span class="iconText">书店</span>
-      </div>
-      <div class="navItem">
-        <div class="icon orange">
-          <span class="icon-star"></span>
+        <div class="navItem">
+          <div class="icon green">
+            <span class="icon-developer_board"></span>
+          </div>
+          <span class="iconText">书店</span>
         </div>
-        <span class="iconText">收藏</span>
-      </div>
-      <div class="navItem">
-        <div class="icon blue">
-          <span class="icon-toys"></span>
+        <div class="navItem">
+          <div class="icon orange">
+            <span class="icon-star"></span>
+          </div>
+          <span class="iconText">收藏</span>
         </div>
-        <span class="iconText">圆桌</span>
+        <div class="navItem">
+          <div class="icon blue">
+            <span class="icon-toys"></span>
+          </div>
+          <span class="iconText">圆桌</span>
+        </div>
       </div>
-    </div>
   
-    <!--热门资讯-->
-    <div class="hot">
-      <div class="title">
-        <span class="top">热门资讯</span>
-        <span class="bottom">72小时热门资讯</span>
-      </div>
-      <div class="item"
-           v-for="hot in find.hotInfomation">
-        <h1 class="title">{{hot.title}}</h1>
-        <p class="summary">{{hot.summary}}</p>
-        <div class="bottom">
-          <span>{{hot.look}} 浏览</span> • <span>{{hot.love}} 赞</span> • <span>{{hot.commit}} 评论</span>
+      <!--热门资讯-->
+      <div class="hot">
+        <div class="title">
+          <span class="top">热门资讯</span>
+          <span class="bottom">72小时热门资讯</span>
         </div>
+        <div class="item"
+             v-for="hot in find.hotInfomation">
+          <h1 class="title">{{hot.title}}</h1>
+          <p @click="selectInfo(hot)" class="summary">{{hot.summary}}</p>
+          <div class="bottom">
+            <span>{{hot.look}} 浏览</span> • <span>{{hot.love}} 赞</span> • <span>{{hot.commit}} 评论</span>
+          </div>
+        </div>
+        <div class="lookMore">查看更多热门资讯</div>
       </div>
-      <div class="lookMore">查看更多热门资讯</div>
-    </div>
   
-    <!--热门内容-->
-    <div class="hot">
-      <div class="title">
-        <span class="top">热门内容</span>
-        <span class="bottom">24小时热门回答及文章</span>
-      </div>
-      <div class="item"
-           v-for="hot in find.hotContent">
-        <h1 class="title">{{hot.title}}</h1>
-        <p class="summary">{{hot.summary}}</p>
-        <div class="bottom">
-          <span>{{hot.look}} 浏览</span> • <span>{{hot.love}} 赞</span> • <span>{{hot.commit}} 评论</span>
+      <!--热门内容-->
+      <div class="hot">
+        <div class="title">
+          <span class="top">热门内容</span>
+          <span class="bottom">24小时热门回答及文章</span>
         </div>
+        <div class="item"
+             v-for="hot in find.hotContent">
+          <h1 class="title">{{hot.title}}</h1>
+          <p @click="selectInfo(hot)" class="summary">{{hot.summary}}</p>
+          <div class="bottom">
+            <span>{{hot.look}} 浏览</span> • <span>{{hot.love}} 赞</span> • <span>{{hot.commit}} 评论</span>
+          </div>
+        </div>
+        <div class="lookMore">查看更多热门内容</div>
       </div>
-      <div class="lookMore">查看更多热门内容</div>
-    </div>
   
-    <!--热门话题-->
-    <div class="hot">
-      <div class="title">
-        <div class="top">
-          <span class="topTit">热门话题</span>
-          <span class="more">查看全部</span>
+      <!--热门话题-->
+      <div class="hot">
+        <div class="title">
+          <div class="top">
+            <span class="topTit">热门话题</span>
+            <span class="more">查看全部</span>
+          </div>
+          <span class="bottom">正在发生和讨论的热点话题</span>
         </div>
-        <span class="bottom">正在发生和讨论的热点话题</span>
-      </div>
-      <div class="itemWrapper">
-        <div class="topicItem"
-             v-for="t in find.hotTopic">
-          <img :src="t.src" />
-          <p class="topicName">{{t.name}}</p>
-          <p class="topicLook">{{t.look}} 次浏览</p>
+        <div class="itemWrapper">
+          <div class="topicItem"
+               v-for="t in find.hotTopic">
+            <img :src="t.src" />
+            <p class="topicName">{{t.name}}</p>
+            <p class="topicLook">{{t.look}} 次浏览</p>
+          </div>
         </div>
       </div>
-    </div>
   
+    </div>
+
+    <Info :info="selectedInfo" ref="info"></Info>
   </div>
 </template>
 
 <script>
-
+import Info from '../Info/Info'
 export default {
   name: 'find',
   data() {
     return {
-      find: {}
+      find: {},
+      selectedInfo: {}
     }
   },
   created() {
@@ -108,6 +113,15 @@ export default {
         this.find = response.find;
       }
     })
+  },
+  methods: {
+    selectInfo (info) {
+      this.selectedInfo = info;
+      this.$refs.info.show();
+    }
+  },
+  components: {
+    Info
   }
 }
 </script>

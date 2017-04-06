@@ -1,51 +1,56 @@
 <template>
     <transition name="info">
-        <div v-if="showFlag"
-             class="info">
-            <div class="infoHeader">
-                <div @click="hide"
-                     class="back"><span class="icon-times-outline"></span></div>
-                <div class="infoInfo">回答</div>
-                <div class="share"><span class="icon-flow-merge"></span></div>
-                <div class="set"><span class="icon-th-list"></span></div>
-            </div>
-            <div class="infoTitle">{{info.title}}</div>
-            <div class="infoUser">
-                <div class="userAvatar"><img :src="info.user.avatar" /></div>
-                <div class="userName">{{info.user.name}}</div>
-                <span class="userFollow">关注</span>
-            </div>
-            <div class="infoMain">
-                {{info.user.info}}
-                <div class="mainFooter">
-                    <span class="time">发布于 {{info.user.time}}</span>
-                    <span>著作权归作者所有</span>
+        <div v-if="showFlag">
+            <div class="info">
+                <div class="infoHeader">
+                    <div @click="hide"
+                         class="back"><span class="icon-times-outline"></span></div>
+                    <div class="infoInfo">回答</div>
+                    <div class="share"><span class="icon-flow-merge"></span></div>
+                    <div @click="showInfoSet"
+                         class="set"><span class="icon-th-list"></span></div>
+                </div>
+                <div class="infoTitle">{{info.title}}</div>
+                <div class="infoUser">
+                    <div class="userAvatar"><img :src="info.user.avatar" /></div>
+                    <div class="userName">{{info.user.name}}</div>
+                    <span class="userFollow">关注</span>
+                </div>
+                <div class="infoMain">
+                    {{info.user.info}}
+                    <div class="mainFooter">
+                        <span class="time">发布于 {{info.user.time}}</span>
+                        <span>著作权归作者所有</span>
+                    </div>
+                </div>
+                <div class="infoFooter">
+                    <div class="infoNum">{{info.love}}</div>
+                    <div class="infoIcon">
+                        <span class="icon-flag icon"></span>
+                        <span class="i">没有帮助</span>
+                    </div>
+                    <div class="infoIcon">
+                        <span class="icon-heart-outline icon"></span>
+                        <span class="i">感谢</span>
+                    </div>
+                    <div class="infoIcon">
+                        <span class="icon-star-outline icon"></span>
+                        <span class="i">收藏</span>
+                    </div>
+                    <div class="infoIcon">
+                        <span class="icon-message-typing icon"></span>
+                        <span class="i">{{info.commit}}</span>
+                    </div>
                 </div>
             </div>
-            <div class="infoFooter">
-                <div class="infoNum">{{info.love}}</div>
-                <div class="infoIcon">
-                    <span class="icon-flag icon"></span>
-                    <span class="i">没有帮助</span>
-                </div>
-                <div class="infoIcon">
-                    <span class="icon-heart-outline icon"></span>
-                    <span class="i">感谢</span>
-                </div>
-                <div class="infoIcon">
-                    <span class="icon-star-outline icon"></span>
-                    <span class="i">收藏</span>
-                </div>
-                <div class="infoIcon">
-                    <span class="icon-message-typing icon"></span>
-                    <span class="i">{{info.commit}}</span>
-                </div>
-            </div>
+            <InfoSet ref="infoSet"></InfoSet>
         </div>
     </transition>
 </template>
 
 <script>
+
+import InfoSet from '../infoSet/InfoSet'
 
 export default {
     name: 'info',
@@ -56,7 +61,7 @@ export default {
     },
     data() {
         return {
-            showFlag: false
+            showFlag: false,
         }
     },
     methods: {
@@ -65,7 +70,13 @@ export default {
         },
         hide() {
             this.showFlag = false;
-        }
+        },
+        showInfoSet() {
+            this.$refs.infoSet.show();
+        },
+    },
+    components: {
+        InfoSet
     }
 }
 </script>
@@ -111,7 +122,7 @@ export default {
     .share
       margin-right: 20px    
   .infoTitle
-    height: 60px
+    min-height: 60px
     width: 100%
     background:  #0f88eb    
     padding: 15px
