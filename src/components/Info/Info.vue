@@ -6,7 +6,7 @@
                     <div @click="hide"
                          class="back"><span class="icon-times-outline"></span></div>
                     <div class="infoInfo">回答</div>
-                    <div class="share"><span class="icon-flow-merge"></span></div>
+                    <div @click="showShare" class="share"><span class="icon-flow-merge"></span></div>
                     <div @click="showInfoSet"
                          class="set"><span class="icon-th-list"></span></div>
                 </div>
@@ -44,6 +44,7 @@
                 </div>
             </div>
             <InfoSet ref="infoSet"></InfoSet>
+            <Share ref="share"></Share>
         </div>
     </transition>
 </template>
@@ -51,6 +52,7 @@
 <script>
 
 import InfoSet from '../infoSet/InfoSet'
+import Share from '../share/Share'
 
 export default {
     name: 'info',
@@ -74,9 +76,13 @@ export default {
         showInfoSet() {
             this.$refs.infoSet.show();
         },
+        showShare () {
+            this.$refs.share.show();
+        }
     },
     components: {
-        InfoSet
+        InfoSet,
+        Share
     }
 }
 </script>
