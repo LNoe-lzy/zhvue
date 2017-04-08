@@ -25,6 +25,7 @@ var app = express()
 var appData = require('../data')
 var article = appData.article
 var find = appData.find
+var message = appData.message
 
 var apiRoutes = express.Router()
 apiRoutes.get('/article', function (req, res) {
@@ -38,6 +39,13 @@ apiRoutes.get('/find', function (req, res) {
   res.json({
     errno: 0,
     find: find
+  })
+})
+
+apiRoutes.get('/message', function (req, res) {
+  res.json({
+    errno: 0,
+    message: message
   })
 })
 

@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Article from '../components/article/Article'
 import Find from '../components/find/Find'
 import Remind from '../components/Remind/Remind'
-import Message from '../components/Message/Message'
+import Message from '../components/message/Message'
 import Setting from '../components/Setting/Setting'
 import Info from '../components/Info/Info'
 
