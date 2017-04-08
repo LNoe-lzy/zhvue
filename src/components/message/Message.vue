@@ -1,6 +1,8 @@
 <template>
   <div class="message">
-    message
+    <div class="messageHeader">
+      
+    </div>
   </div>
 </template>
 

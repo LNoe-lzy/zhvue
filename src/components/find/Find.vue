@@ -1,9 +1,7 @@
 <template>
   <div>
     <div class="find">
-      <div class="findHeader">
-        <div class="headInfo">发现</div>
-      </div>
+      <v-header inner="发现"></v-header>
       <div class="findNav">
         <div class="navItem">
           <div class="icon blue">
@@ -98,6 +96,7 @@
 
 <script>
 import Info from '../Info/Info'
+import Header from '../header/header'
 export default {
   name: 'find',
   data() {
@@ -121,7 +120,8 @@ export default {
     }
   },
   components: {
-    Info
+    Info,
+    'v-header': Header
   }
 }
 </script>
