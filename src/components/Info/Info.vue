@@ -33,7 +33,7 @@
                         <span class="icon-heart-outline icon"></span>
                         <span class="i">感谢</span>
                     </div>
-                    <div class="infoIcon">
+                    <div class="infoIcon" @click="addCollection(info)">
                         <span class="icon-star-outline icon"></span>
                         <span class="i">收藏</span>
                     </div>
@@ -78,6 +78,9 @@ export default {
         },
         showShare () {
             this.$refs.share.show();
+        },
+        addCollection(collection) {
+            this.$store.dispatch('addCollection', collection);
         }
     },
     components: {

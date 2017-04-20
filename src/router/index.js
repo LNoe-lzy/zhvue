@@ -6,6 +6,7 @@ import Remind from '../components/Remind/Remind'
 import Message from '../components/message/Message'
 import Setting from '../components/setting/Setting'
 import Info from '../components/Info/Info'
+import Collections from '../components/collections/Collections';
 
 Vue.use(Router)
 
@@ -33,5 +34,10 @@ export default new Router({
     {
       path: '/setting',
       component: Setting
-    }]
+    },
+    {
+      path: '/collections',
+      component: Collections
+    }
+  ]
 })

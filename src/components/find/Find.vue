@@ -38,7 +38,7 @@
       <!--热门资讯-->
       <div class="hot">
         <div class="title">
-          <span class="top">热门资讯</span>
+          <span class="hottop">热门资讯</span>
           <span class="bottom">72小时热门资讯</span>
         </div>
         <div class="item"
@@ -96,7 +96,7 @@
 
 <script>
 import Info from '../Info/Info'
-import Header from '../header/header'
+import Header from '../header/Header'
 export default {
   name: 'find',
   data() {
@@ -192,7 +192,7 @@ export default {
       margin-bottom: 15px
       display: flex
       flex-direction: column
-      .top
+      .hottop
         font-size: 18px
         font-weight: 700
         display: flex

@@ -17,10 +17,10 @@
           <div class="paneicon"><span class="icon-visibility"></span></div>
           <span class="paneinfo">我的关注</span>
         </div>
-        <div class="setPane">
+        <router-link to="/collections" class="setPane">
           <div class="paneicon"><span class="icon-star"></span></div>
           <span class="paneinfo">我的收藏</span>
-        </div>
+        </router-link>
         <div class="setPane">
           <div class="paneicon"><span class="icon-save"></span></div>
           <span class="paneinfo">我的草稿</span>

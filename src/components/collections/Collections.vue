@@ -11,15 +11,15 @@
       </div>
       <div class="wrapper">
         <div class="item"
-             v-for="(arc, index) in article">
+             v-for="(col, index) in collections">
           <div class="top">
-            <div class="avatar"><img :src="arc.avatar"></div>
-            <div class="topic">{{arc.topic}}</div>
+            <div class="avatar"><img :src="col.user.avatar"></div>
+            <div class="topic">{{col.topic}}</div>
           </div>
-          <h1 class="title">{{arc.title}}</h1>
-          <p @click="selectArticle(arc)" class="summary">{{arc.summary}}</p>
+          <h1 class="title">{{col.title}}</h1>
+          <p @click="selectArticle(col)" class="summary">{{col.summary}}</p>
           <div class="bottom">
-            <span>{{arc.love}} 赞同</span> • <span>{{arc.commit}} 评论</span> • <span>关注问题</span>
+            <span>{{col.love}} 赞同</span> • <span>{{col.commit}} 评论</span> • <span>关注问题</span>
           </div>
         </div>
       </div>
@@ -33,17 +33,13 @@ export default {
   name: 'article',
   data() {
     return {
-      article: [],
+      collections: [],
       selectedArticle: {}
     }
   },
-  created() {
-    this.$http.get('/api/article').then((response) => {
-      response = response.body;
-      if (response.errno === 0) {
-        this.article = response.article;
-      }
-    })
+  created () {
+      this.collections = this.$store.state.collections;
+      console.log(this.$store.state.collections);
   },
   methods: {
     selectArticle(article) {
