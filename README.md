@@ -20,3 +20,9 @@ npm run build
 npm run build --report
 ```
 
+## 参考资料
+- [vue2](http://cn.vuejs.org/)
+- [vuex2](https://vuex.vuejs.org/zh-cn/)
+- [vue-router](http://router.vuejs.org/zh-cn/)
+- [vue2.0构建单页应用最佳实战](https://segmentfault.com/a/1190000007630677?utm_source=tuicool&utm_medium=referral)
+- [知乎](https://www.zhihu.com/)
