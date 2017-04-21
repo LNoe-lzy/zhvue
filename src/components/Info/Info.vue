@@ -14,7 +14,7 @@
                 <div class="infoUser">
                     <div class="userAvatar"><img :src="info.user.avatar" /></div>
                     <div class="userName">{{info.user.name}}</div>
-                    <span class="userFollow">关注</span>
+                    <span class="userFollow" @click="addFollow(info.user)">关注</span>
                 </div>
                 <div class="infoMain">
                     {{info.user.info}}
@@ -81,6 +81,9 @@ export default {
         },
         addCollection(collection) {
             this.$store.dispatch('addCollection', collection);
+        },
+        addFollow(user) {
+            this.$store.dispatch('addFollow', user)
         }
     },
     components: {

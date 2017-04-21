@@ -1,109 +1,80 @@
 <template>
-  <div>
-    <div class="article">
-      <div class="header">
-        <input type="text"
-               placeholder="搜索" />
-        <label><span class="icon-search"></span></label>
-        <div class="live">
-          <span class="icon-power"></span>
+    <div>
+        <div class="collections">
+            <MinHeader type="收藏" path="/setting"></MinHeader>
+            <div class="wrapper">
+                <div class="item"
+                     v-for="(col, index) in collections">
+                    <div class="top">
+                        <div class="avatar"><img :src="col.user.avatar"></div>
+                        <div class="topic">{{col.topic}}</div>
+                        <div class="remove" @click="removeCollection(index)">取消收藏</div>
+                    </div>
+                    <h1 class="title">{{col.title}}</h1>
+                    <p @click="selectArticle(col)"
+                       class="summary">{{col.summary}}</p>
+                    <div class="bottom">
+                        <span>{{col.love}} 赞同</span> • <span>{{col.commit}} 评论</span> • <span>关注问题</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="wrapper">
-        <div class="item"
-             v-for="(col, index) in collections">
-          <div class="top">
-            <div class="avatar"><img :src="col.user.avatar"></div>
-            <div class="topic">{{col.topic}}</div>
-          </div>
-          <h1 class="title">{{col.title}}</h1>
-          <p @click="selectArticle(col)" class="summary">{{col.summary}}</p>
-          <div class="bottom">
-            <span>{{col.love}} 赞同</span> • <span>{{col.commit}} 评论</span> • <span>关注问题</span>
-          </div>
-        </div>
-      </div>
+        <Info :info="selectedArticle"
+              ref="info"></Info>
     </div>
-    <Info :info="selectedArticle" ref="info"></Info>
-  </div>
 </template>
 <script>
 import Info from '../Info/Info'
+import MinHeader from '../minHeader/MinHeader'
 export default {
-  name: 'article',
-  data() {
-    return {
-      collections: [],
-      selectedArticle: {}
+    name: 'collections',
+    data() {
+        return {
+            collections: [],
+            selectedArticle: {}
+        }
+    },
+    created() {
+        this.collections = this.$store.state.collections;
+    },
+    methods: {
+        selectArticle(article) {
+            this.selectedArticle = article;
+            // 显示info组件
+            this.$refs.info.show();
+        },
+        // 取消关注
+        removeCollection(index) {
+            this.$store.dispatch('removeCollection', index);
+        }
+    },
+    components: {
+        Info,
+        MinHeader
     }
-  },
-  created () {
-      this.collections = this.$store.state.collections;
-      console.log(this.$store.state.collections);
-  },
-  methods: {
-    selectArticle(article) {
-      this.selectedArticle = article;
-      // 显示info组件
-      this.$refs.info.show();
-    }
-  },
-  components: {
-    Info
-  }
 }
 </script>
 
 <style lang="stylus">
-::-webkit-input-placeholder
-  color: #fff
-:-moz-placeholder
-  color: #fff
-::-moz-placeholder
-  color: #fff
-:-ms-input-placeholder 
-  color: #fff
-.article
+.collections
    width: 100%
-   .header
+   .collection-header
      width: 100%
      box-sizing: border-box
      height: 60px
-     padding: 10px
+     padding: 15px
      background: #0f88eb
      display: flex
      position: fixed
      top: 0
      left: 0
-     label
-       width: 40px
-       height: 40px
-       position: absolute
-       left: 10px
-       top: 10px
-       font-size: 20px
+     align-items: center
+     color: #fff
+     font-size: 20px
+     .collection-back
        color: #fff
-       display: flex
-       justify-content: center
-       align-items: center
-     input
-       box-sizing: border-box
-       height: 40px
-       width: 100%
-       padding-left: 40px
-       background: rgba(108, 161, 231, 0.6)
-       color: #fff
-       outline: none
-       border-radius: 3px
-     .live
-       width: 40px
-       height: 40px
-       font-size: 20px
-       color: #fff
-       display: flex
-       justify-content: center
-       align-items: center
-       margin-left: 10px  
+     .collection-title
+       margin-left: 15px
    .wrapper
      box-sizing: border-box
      padding: 70px 0 50px 0
@@ -130,8 +101,16 @@ export default {
              width: 100%
              height: 100%
          .topic
-             color: #999
-             margin-left: 10px  
+           color: #999
+           margin-left: 10px  
+           flex: 1
+         .remove
+           font-size: 14px
+           font-weight: 100
+           padding: 10px
+           background: #0f88eb
+           color: #fff    
+           border-radius: 5px  
        .title
          font-size: 18px
          font-weight: 700

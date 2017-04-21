@@ -13,10 +13,10 @@
       </div>
 
       <div class="setPanel">
-        <div class="setPane">
+        <router-link to="/follow" class="setPane">
           <div class="paneicon"><span class="icon-visibility"></span></div>
           <span class="paneinfo">我的关注</span>
-        </div>
+        </router-link>
         <router-link to="/collections" class="setPane">
           <div class="paneicon"><span class="icon-star"></span></div>
           <span class="paneinfo">我的收藏</span>
