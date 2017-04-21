@@ -1,21 +1,22 @@
 # zhvue
 
-> A Vue.js project
+> 仿移动安卓版知乎（个人学习项目）
 
-## Build Setup
+vue2 + vuex2 + vue-router + stylus
+
+现阶段数据均为mock数据（data.json）
+
+由于知乎功能很多，现阶段仅完成几个小功能。并且由于暂未开发后端，个别交互逻辑稍有欠缺，后期会不断完善。
+
+## 使用方法
 
 ``` bash
-# install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
 npm run dev
 
-# build for production with minification
 npm run build
 
-# build for production and view the bundle analyzer report
 npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
